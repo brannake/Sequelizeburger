@@ -10,7 +10,7 @@ var bodyParser = require("body-parser");
 // Sets up the Express App
 // =============================================================
 var app = express();
-var PORT = process.env.PORT || 4000;
+var PORT = process.env.JAWSDB_URL || 3000;
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
