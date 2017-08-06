@@ -13,8 +13,9 @@ var sequelize = new Sequelize("burgers_db", "root", "meatbal1l", {
     max: 5,
     min: 0,
     idle: 10000
-  }
+  },
 });
+
 
 // Exports the connection for other files to use
 module.exports = sequelize;

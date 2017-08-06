@@ -19,7 +19,6 @@ module.exports = function(app) {
     // If we want something to be guaranteed to happen after the query, we'll use
     // the .then function
     Chirp.findAll({}).then(function(results) {
-      console.log(results);
       // results are available to us inside the .then
       res.json(results);
     });
@@ -29,33 +28,41 @@ module.exports = function(app) {
   // Add a chirp
   app.post("/api/new", function(req, res) {
 
-    console.log("Chirp Data:");
-    console.log(req.body);
-
     Chirp.create({
       burger_name: req.body.burger_name,
       devoured: 0,
       date: req.body.created_at
     }).then(function(results) {
       // `results` here would be the newly created chirp
+      res.json(results);
+    });
+
+  });
+
+  app.post("/api/delete", function(req, res) {
+
+    Chirp.destroy({
+        where: {
+      id: req.body.id
+        }
+    }).then(function(results) {
       res.end();
     });
 
   });
 
-    app.post("/api/delete", function(req, res) {
+    app.post("/api/devour", function(req, res) {
 
-    console.log("Chirp Data:");
-    console.log(req.body);
+console.log(req.body);
 
-    Chirp.create({
-      burger_name: req.body.burger_name,
-      devoured: 0,
-      date: req.body.created_at
-    }).then(function(results) {
-      // `results` here would be the newly created chirp
+    Chirp.update({
+    devoured: true,
+}, {
+  where: { 
+    id: req.body.id },
+})
+.then(function (result) {
       res.end();
-    });
-
+  });
   });
 }
