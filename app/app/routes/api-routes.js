@@ -12,7 +12,7 @@ var Chirp = require("../models/chirp.js");
 module.exports = function(app) {
 
   // Get all chirps
-  app.get("/", function(req, res) {
+  app.get("/lol", function(req, res) {
 
     // Finding all Chirps, and then returning them to the user as JSON.
     // Sequelize queries are aynchronous, which helps with percieved speed.

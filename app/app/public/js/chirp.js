@@ -31,7 +31,7 @@ $("#chirp-submit").on("click", function(event) {
 
 $( document ).ready(function() {
 // When the page loads, grab all of our chirps
-$.get("/", function(data) {
+$.get("/lol", function(data) {
   console.log(data);
 
   if (data.length !== 0) {
